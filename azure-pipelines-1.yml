@@ -1,0 +1,20 @@
+
+trigger:
+- master
+
+stages:
+  - stage: Stage1
+    displayName: Stage 1  
+    pool:
+      vmImage: ubuntu-latest
+
+    jobs:
+      - job: Welcome
+        steps:
+        - script: echo Hello World!
+          displayName: 'Run a one-line script'
+
+        - task: PowerShell@2
+          inputs:
+            targetType: 'inline'
+            script: 'Write-Host "Hello World!"'
